@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Vtiger Suite" parallel="tests" thread-count="2">
+    <test name="Test-1">
+        <parameter name="BROWSER" value="CHROME"></parameter>
+        <classes>
+            <class name="com.vtigertestng.testscripts.ContactTest"/>
+        </classes>
+    </test>
+    <test name="Test-2">
+        <parameter name="BROWSER" value="EDGE"></parameter>
+        <classes>
+            <class name="com.vtigertestng.testscripts.OrganizationTest"/>
+        </classes>
+    </test>
+</suite>
