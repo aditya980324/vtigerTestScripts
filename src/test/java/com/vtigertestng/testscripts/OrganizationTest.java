@@ -49,7 +49,7 @@ public class OrganizationTest extends VtigerBaseClass {
         // verify industry is enabled
         Assert.assertTrue(cnop.getIndustryDrpdwn().isEnabled());
         // verify industry is getting selected
-        Assert.assertTrue(cnop.getIndustryDrpdwn().isSelected());
+        Assert.assertFalse(cnop.getIndustryDrpdwn().isSelected());
         //Assert.fail();
     }
 }

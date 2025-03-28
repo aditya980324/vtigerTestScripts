@@ -22,12 +22,16 @@ public class Vtiger_ListenerImpClass implements ITestListener, ISuiteListener {
     public ExtentTest test;
     @Override
     public void onTestFailure(ITestResult result) {
-        WebDriver sdriver= UtilityClassObject.getDriver();
+        //WebDriver sdriver= UtilityClassObject.getDriver();
+        WebDriver sdriver= VtigerBaseClass.sdriver;
         String testName = result.getName();
-        TakesScreenshot ts =(TakesScreenshot) sdriver;
-        String src=ts.getScreenshotAs(OutputType.BASE64);
-        String time=new Date().toString().replace(" ","_").replace(":","_");
-        test.addScreenCaptureFromBase64String(src,testName+time);
+        if (sdriver!=null) {
+            TakesScreenshot ts = (TakesScreenshot) sdriver;
+            String src = ts.getScreenshotAs(OutputType.BASE64);
+            String time = new Date().toString().replace(" ", "_").replace(":", "_");
+            test.addScreenCaptureFromBase64String(src, testName + time);
+        }
+        else System.out.println("sdriver is null");
     }
 
     @Override

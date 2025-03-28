@@ -17,6 +17,7 @@ public class VtigerBaseClass {
     }
     // initialize the driver
     public WebDriver driver=null;
+    public static WebDriver sdriver;
     // utility classes
     public VtigerExcelUtility veu = new VtigerExcelUtility();
     public VtigerPropertyUtility vpu = new VtigerPropertyUtility();
@@ -36,17 +37,20 @@ public class VtigerBaseClass {
     public OrganizationsPage op ;
     public WebDriverUtility wd;
 
-    @AfterSuite
-    public void disconnectVtigerDB () {
-
-    }
     //@Parameters("BROWSER")
-    @BeforeClass
+    @BeforeSuite
     //public void openBrowser (String BROWSER) {
     public void openBrowser () {
         // initialize the browser
         //driver= wdu.getDriver(BROWSER);
         driver= wdu.getDriver(browser);
+        if (driver==null)
+            System.out.println("base class driver is null");
+        else System.out.println("driver is initialized");
+        sdriver=driver;
+        if (sdriver==null)
+            System.out.println("base class sdriver is null");
+        else System.out.println("sdriver is initialized");
         UtilityClassObject.setDriver(driver);
         // object repository initiation
         lp=new LoginPage(driver);
