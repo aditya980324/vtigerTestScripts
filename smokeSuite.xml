@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="All Test Suite">
+    <groups>
+        <run>
+            <include name="smoke"/>
+        </run>
+    </groups>
+    <test verbose="2" preserve-order="true"
+          name="C:/Users/satyam goswami/IdeaProjects/Selenium_Training/src/test/java/com/vtigertestng/testscripts/ContactTest.java">
+        <classes>
+            <class name="com.vtigertestng.testscripts.ContactTest"/>
+            <class name="com.vtigertestng.testscripts.OrganizationTest"/>
+        </classes>
+    </test>
+</suite>

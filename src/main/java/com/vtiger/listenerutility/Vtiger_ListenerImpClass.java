@@ -7,6 +7,7 @@ import com.aventstack.extentreports.reporter.configuration.Theme;
 import com.vtiger.webdriver_java_listener_utility.VtigerBaseClass;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
+import org.openqa.selenium.WebDriver;
 import org.testng.ISuite;
 import org.testng.ISuiteListener;
 import org.testng.ITestListener;
@@ -20,6 +21,7 @@ public class Vtiger_ListenerImpClass implements ITestListener, ISuiteListener {
     public ExtentTest test;
     @Override
     public void onTestFailure(ITestResult result) {
+        //WebDriver driver= UtilityClassObject.getDriver();
         String testName = result.getName();
         TakesScreenshot ts =(TakesScreenshot) VtigerBaseClass.sdriver;
         String src=ts.getScreenshotAs(OutputType.BASE64);

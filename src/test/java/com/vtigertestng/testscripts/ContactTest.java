@@ -8,11 +8,11 @@ import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 import java.io.IOException;
-@Listeners(Vtiger_ListenerImpClass.class)
+@Listeners(com.vtiger.listenerutility.Vtiger_ListenerImpClass.class)
 public class ContactTest extends VtigerBaseClass {
     public ContactTest() throws IOException {}
 
-    @Test
+    @Test(groups = "smoke")
     public void createContact () {
         //test.log(Status.INFO,"");
         // click on contact major tab
@@ -25,7 +25,7 @@ public class ContactTest extends VtigerBaseClass {
         // click on save btn
         cncp.getSaveBtn().click();
     }
-    @Test
+    @Test(groups = "regression")
     public void createContactWithOrg () {
         // click on contact major tab
         hp.getContactsMajorTab().click();
@@ -53,7 +53,7 @@ public class ContactTest extends VtigerBaseClass {
         cncp.getSaveBtn().click();
         //Assert.fail();
     }
-    @Test
+    @Test(groups = "smoke")
     public void createContactWithDate () {
         // click on contact major tab
         hp.getContactsMajorTab().click();

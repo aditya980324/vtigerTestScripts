@@ -24,10 +24,10 @@ public class VtigerBaseClass {
     public JavaUtility ju = new JavaUtility();
     public WebDriverUtility wdu =new WebDriverUtility();
     // storing data in variables
-    String browser=vpu.getVtigerPropData("browser");
-    String url=vpu.getVtigerPropData("url");
-    String username=vpu.getVtigerPropData("username");
-    String password=vpu.getVtigerPropData("password");
+    String browser=System.getProperty("browser",vpu.getVtigerPropData("browser"));
+    String url=System.getProperty("url",vpu.getVtigerPropData("url"));
+    String username=System.getProperty("username",vpu.getVtigerPropData("username"));
+    String password=System.getProperty("password",vpu.getVtigerPropData("password"));
     // object repository
     public ContactsPage cp;
     public CreateNewContactPage cncp ;
