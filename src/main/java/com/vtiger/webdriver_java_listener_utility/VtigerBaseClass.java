@@ -6,6 +6,7 @@ import com.aventstack.extentreports.reporter.configuration.Theme;
 import com.vtiger.datautility.VtigerExcelUtility;
 import com.vtiger.datautility.VtigerPropertyUtility;
 import com.vtiger.objectutility.*;
+import com.vtiger.threadutility.UtilityClassObject;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.*;
 
@@ -14,10 +15,8 @@ import java.io.IOException;
 public class VtigerBaseClass {
     public VtigerBaseClass() throws IOException {
     }
-    public ExtentReports report;
     // initialize the driver
     public WebDriver driver=null;
-    public static WebDriver sdriver;
     // utility classes
     public VtigerExcelUtility veu = new VtigerExcelUtility();
     public VtigerPropertyUtility vpu = new VtigerPropertyUtility();
@@ -37,20 +36,6 @@ public class VtigerBaseClass {
     public OrganizationsPage op ;
     public WebDriverUtility wd;
 
-    // connect to db
-    @BeforeSuite
-    public void connectVtigerDB () {
-        String time=ju.currentDateTime();
-        ExtentSparkReporter spark =new ExtentSparkReporter("./AdvanceReports/report-"+time+".html");
-        spark.config().setDocumentTitle("Vtiger Test Results");
-        spark.config().setReportName("Vtiger Report");
-        spark.config().setTheme(Theme.STANDARD);
-        //
-        report=new ExtentReports();
-        report.attachReporter(spark);
-        report.setSystemInfo("os","windows-11");
-        report.setSystemInfo("browser","chrome 13");
-    }
     @AfterSuite
     public void disconnectVtigerDB () {
 
@@ -62,7 +47,7 @@ public class VtigerBaseClass {
         // initialize the browser
         //driver= wdu.getDriver(BROWSER);
         driver= wdu.getDriver(browser);
-        sdriver=driver;
+        UtilityClassObject.setDriver(driver);
         // object repository initiation
         lp=new LoginPage(driver);
         hp=new HomePage(driver);

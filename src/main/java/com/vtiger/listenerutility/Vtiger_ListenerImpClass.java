@@ -4,6 +4,7 @@ import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.reporter.ExtentSparkReporter;
 import com.aventstack.extentreports.reporter.configuration.Theme;
+import com.vtiger.threadutility.UtilityClassObject;
 import com.vtiger.webdriver_java_listener_utility.VtigerBaseClass;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
@@ -21,9 +22,9 @@ public class Vtiger_ListenerImpClass implements ITestListener, ISuiteListener {
     public ExtentTest test;
     @Override
     public void onTestFailure(ITestResult result) {
-        //WebDriver driver= UtilityClassObject.getDriver();
+        WebDriver sdriver= UtilityClassObject.getDriver();
         String testName = result.getName();
-        TakesScreenshot ts =(TakesScreenshot) VtigerBaseClass.sdriver;
+        TakesScreenshot ts =(TakesScreenshot) sdriver;
         String src=ts.getScreenshotAs(OutputType.BASE64);
         String time=new Date().toString().replace(" ","_").replace(":","_");
         test.addScreenCaptureFromBase64String(src,testName+time);
